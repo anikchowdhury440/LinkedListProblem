@@ -76,6 +76,9 @@ public class LinkedList<K> {
 	}
 	
 	public boolean search(K value) {
+		if(isEmpty()) {
+			return false;
+		}
 		Node<K> tempNode = this.head;
 		while(tempNode.getNext() != null) {
 			if(tempNode.getValue().equals(value)) {
