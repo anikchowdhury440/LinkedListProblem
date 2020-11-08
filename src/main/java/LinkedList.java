@@ -46,6 +46,18 @@ public class LinkedList<K> {
 		newNode.setNext(tempNode.getNext());
 		tempNode.setNext(newNode);
 	}
+	
+	public Node<K> pop() {
+		Node<K> tempNode = this.head;
+		if(head.equals(tail)) {
+			this.tail = null;
+			this.head = null;
+			return tempNode;
+		}
+		this.head = head.getNext();
+		return tempNode;
+	}
+
 
 	public void printNodes() {
 		StringBuffer myNodes = new StringBuffer();
