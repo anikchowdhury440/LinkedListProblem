@@ -58,6 +58,22 @@ public class LinkedList<K> {
 		return tempNode;
 	}
 
+	public Node<K> popLast() {
+		Node<K> tempNode = this.head;
+		if(head.equals(tail)) {
+			this.tail = null;
+			this.head = null;
+			return tempNode;
+		}
+		Node<K> removedNode = this.tail;
+		while(tempNode.getNext() != this.tail)
+		{
+			tempNode = tempNode.getNext();
+		}
+		tempNode.setNext(null);
+		this.tail = tempNode;
+		return removedNode;
+	}
 
 	public void printNodes() {
 		StringBuffer myNodes = new StringBuffer();
