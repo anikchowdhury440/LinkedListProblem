@@ -46,4 +46,21 @@ public class LinkedListTest {
 						 linkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
 	}
+	
+	@Test
+	public void givenNumber_WhenInsertedBetweenTwoNumberInLinkedList_ShouldBeInsertedInBetween() {
+		Node<Integer> firstNode = new Node<Integer>(56);
+		Node<Integer> secondNode = new Node<Integer>(70);
+		Node<Integer> insertedNode = new Node<Integer>(30);
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		linkedList.add(firstNode);
+		linkedList.append(secondNode);
+		linkedList.insert(firstNode, insertedNode);
+		linkedList.printNodes();
+		boolean result = linkedList.head.equals(firstNode) &&
+				 linkedList.head.getNext().equals(insertedNode) &&
+				 linkedList.tail.equals(secondNode);
+		Assert.assertTrue(result);
+	}
+
 }

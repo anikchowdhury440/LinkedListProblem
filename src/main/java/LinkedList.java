@@ -35,6 +35,15 @@ public class LinkedList<K> {
 		}
 	}
 	
+	public void insert(Node<K> node, Node<K> newNode) {
+		Node<K> tempNode = this.head;
+		while(!tempNode.getValue().equals(node.getValue())) {
+			tempNode = tempNode.getNext();
+		}
+		newNode.setNext(tempNode.getNext());
+		tempNode.setNext(newNode);
+	}
+	
 	public void printNodes() {
 		StringBuffer myNodes = new StringBuffer();
 		Node<K> tempNode = this.head;
