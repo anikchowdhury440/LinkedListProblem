@@ -74,6 +74,20 @@ public class LinkedList<K> {
 		this.tail = tempNode;
 		return removedNode;
 	}
+	
+	public boolean search(K value) {
+		Node<K> tempNode = this.head;
+		while(tempNode.getNext() != null) {
+			if(tempNode.getValue().equals(value)) {
+				return true;
+			}
+			tempNode = tempNode.getNext();
+		}
+		if(tempNode.getValue().equals(value)) {
+			return true;
+		}
+		return false;
+	}
 
 	public void printNodes() {
 		StringBuffer myNodes = new StringBuffer();
