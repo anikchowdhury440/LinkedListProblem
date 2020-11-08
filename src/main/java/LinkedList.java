@@ -8,11 +8,16 @@ public class LinkedList<K> {
 		this.tail = null;
 	}
 	
-	public void add(Node<K> newNode) {
-		if(this.tail == null) {
-			this.tail = newNode;
+	public boolean isEmpty() {
+		if(this.tail == null && this.head == null) {
+			return true;
 		}
-		if(this.head == null) {
+		return false;
+	}
+	
+	public void add(Node<K> newNode) {
+		if(isEmpty()) {
+			this.tail = newNode;
 			this.head = newNode;
 		}
 		else {
@@ -23,10 +28,8 @@ public class LinkedList<K> {
 	}
 	
 	public void append(Node<K> newNode) {
-		if(this.tail == null) {
+		if(isEmpty()) {
 			this.tail = newNode;
-		}
-		if(this.head == null) {
 			this.head = newNode;
 		}
 		else {
@@ -44,6 +47,12 @@ public class LinkedList<K> {
 		tempNode.setNext(newNode);
 	}
 	
+	public K pop() {
+		Node<K> tempNode = this.head;
+		this.head = head.getNext();
+		return tempNode.getValue();
+	}
+	
 	public void printNodes() {
 		StringBuffer myNodes = new StringBuffer();
 		Node<K> tempNode = this.head;
@@ -57,4 +66,5 @@ public class LinkedList<K> {
 		myNodes.append(tempNode.getValue());
 		System.out.println(myNodes);
 	}
+	
 }
