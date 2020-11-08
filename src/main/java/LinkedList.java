@@ -75,21 +75,18 @@ public class LinkedList<K> {
 		return removedNode;
 	}
 	
-	public boolean search(K value) {
-		if(isEmpty()) {
-			return false;
-		}
+	public Node<K> search(K value) {
 		Node<K> tempNode = this.head;
-		while(tempNode.getNext() != null) {
+		while(tempNode != null && tempNode.getNext() != null) {
 			if(tempNode.getValue().equals(value)) {
-				return true;
+				return tempNode;
 			}
 			tempNode = tempNode.getNext();
 		}
 		if(tempNode.getValue().equals(value)) {
-			return true;
+			return tempNode;
 		}
-		return false;
+		return null;
 	}
 
 	public void printNodes() {

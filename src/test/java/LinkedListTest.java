@@ -110,8 +110,8 @@ public class LinkedListTest {
 		linkedList.append(secondNode);
 		linkedList.append(thirdNode);
 		linkedList.printNodes();
-		boolean result = linkedList.search(70);
-		Assert.assertTrue(result);
+		Node<Integer> searchNode = linkedList.search(70);
+		Assert.assertEquals(thirdNode, searchNode);
 	}
 	
 	@Test
@@ -124,7 +124,7 @@ public class LinkedListTest {
 		linkedList.append(secondNode);
 		linkedList.append(thirdNode);
 		linkedList.printNodes();
-		boolean result = linkedList.search(90);
-		Assert.assertFalse(result);
+		Node<Integer> searchNode = linkedList.search(90);
+		Assert.assertEquals(null, searchNode);
 	}
 }
