@@ -127,4 +127,43 @@ public class LinkedListTest {
 		Node<Integer> searchNode = linkedList.search(90);
 		Assert.assertEquals(null, searchNode);
 	}
+	
+	@Test
+	public void givenNumber_WhenInsertedAfterValidNodeInLinkedList_ShouldBeInsertedInBetween() {
+		Node<Integer> firstNode = new Node<Integer>(56);
+		Node<Integer> secondNode = new Node<Integer>(30);
+		Node<Integer> thirdNode = new Node<Integer>(70);
+		Node<Integer> insertedNode = new Node<Integer>(40);
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		linkedList.add(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		linkedList.printNodes();
+		linkedList.insert(secondNode, insertedNode);
+		linkedList.printNodes();
+		boolean result = linkedList.head.equals(firstNode) &&
+				 linkedList.head.getNext().equals(secondNode) &&
+				 linkedList.head.getNext().getNext().equals(insertedNode) &&
+				 linkedList.tail.equals(thirdNode);
+		Assert.assertTrue(result);
+	}
+	
+	@Test
+	public void givenNumber_WhenInsertedAfterInvalidInLinkedList_ShouldNotBeInsertedInBetween() {
+		Node<Integer> firstNode = new Node<Integer>(56);
+		Node<Integer> secondNode = new Node<Integer>(30);
+		Node<Integer> thirdNode = new Node<Integer>(70);
+		Node<Integer> insertedNode = new Node<Integer>(40);
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		linkedList.add(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		linkedList.printNodes();
+		linkedList.insert(new Node<Integer>(60), insertedNode);
+		linkedList.printNodes();
+		boolean result = linkedList.head.equals(firstNode) &&
+				 linkedList.head.getNext().equals(secondNode) &&
+				 linkedList.tail.equals(thirdNode);
+		Assert.assertTrue(result);
+	}
 }

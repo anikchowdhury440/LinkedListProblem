@@ -39,12 +39,15 @@ public class LinkedList<K> {
 	}
 	
 	public void insert(Node<K> node, Node<K> newNode) {
-		Node<K> tempNode = this.head;
-		while(!tempNode.getValue().equals(node.getValue())) {
-			tempNode = tempNode.getNext();
+		
+		Node<K> tempNode = search(node.getValue());
+		if(tempNode != null) {
+			newNode.setNext(tempNode.getNext());
+			tempNode.setNext(newNode);
 		}
-		newNode.setNext(tempNode.getNext());
-		tempNode.setNext(newNode);
+		else {
+			System.out.println("Node can't inserted");
+		}
 	}
 	
 	public Node<K> pop() {
