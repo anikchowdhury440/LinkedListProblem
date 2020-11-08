@@ -77,8 +77,26 @@ public class LinkedListTest {
 		int removedElement = linkedList.pop();
 		System.out.println("Removed Element: " + removedElement);
 		linkedList.printNodes();
-		boolean result = linkedList.head.equals(secondNode) &&
-				 linkedList.tail.equals(thirdNode);
+		boolean result = linkedList.head.equals(secondNode) && 
+				linkedList.tail.equals(thirdNode);
+		Assert.assertTrue(result);
+	}
+	
+	@Test
+	public void whenPopLastOperationInLinkedList_ShouldRemoveElementFromLast() {
+		Node<Integer> firstNode = new Node<Integer>(56);
+		Node<Integer> secondNode = new Node<Integer>(30);
+		Node<Integer> thirdNode = new Node<Integer>(70);
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		linkedList.add(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		linkedList.printNodes();
+		int removedElement = linkedList.popLast();
+		System.out.println("Removed Element: " + removedElement);
+		linkedList.printNodes();
+		boolean result = linkedList.head.equals(firstNode) && 
+				linkedList.tail.equals(secondNode);
 		Assert.assertTrue(result);
 	}
 }

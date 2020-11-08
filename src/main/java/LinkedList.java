@@ -49,12 +49,37 @@ public class LinkedList<K> {
 	
 	public K pop() {
 		Node<K> tempNode = this.head;
+		if(tempNode.equals(tail)) {
+			this.tail = null;
+			this.head = null;
+			return tempNode.getValue();
+		}
 		this.head = head.getNext();
 		return tempNode.getValue();
 	}
-	
+
+	public K popLast() {
+		Node<K> tempNode = this.head;
+		Node<K> removedNode = this.tail;
+		if(tempNode.equals(tail)) {
+			this.tail = null;
+			this.head = null;
+			return removedNode.getValue();
+		}
+		while(tempNode.getNext() != this.tail)
+		{
+			tempNode = tempNode.getNext();
+		}
+		tempNode.setNext(null);
+		this.tail = tempNode;
+		return removedNode.getValue();
+	}
+
 	public void printNodes() {
 		StringBuffer myNodes = new StringBuffer();
+		if(isEmpty()) {
+			return;
+		}
 		Node<K> tempNode = this.head;
 		while(tempNode.getNext() != null) {
 			myNodes.append(tempNode.getValue());
