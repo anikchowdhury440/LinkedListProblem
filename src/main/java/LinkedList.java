@@ -26,6 +26,17 @@ public class LinkedList<K> {
 			this.head.setNext(tempNode);
 		}
 	}
+	
+	public void append(Node<K> newNode) {
+		if(isEmpty()) {
+			this.tail = newNode;
+			this.head = newNode;
+		}
+		else {
+			this.tail.setNext(newNode);
+			this.tail = newNode;
+		}
+	}
 
 	public void printNodes() {
 		StringBuffer myNodes = new StringBuffer();
