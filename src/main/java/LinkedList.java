@@ -91,7 +91,39 @@ public class LinkedList<K> {
 		}
 		return null;
 	}
+	
+	public void delete(Node<K> node) {
+		
+		Node<K> removedNode = search(node.getValue());
+		if(removedNode != null) {
+			Node<K> tempNode = this.head;
+			while(tempNode.getNext() !=  removedNode) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(removedNode.getNext());
+			System.out.println("After Deleting Size = " + size());
+		}
+		else {
+			System.out.println("Node can't deleted");
+		}
+	}
 
+	public int size() {
+		int count = 0;
+		Node<K> tempNode = this.head;
+		if(tempNode == null) {
+			return count;
+		}
+		count++;
+		while(tempNode.getNext() != this.tail) {
+			tempNode = tempNode.getNext();
+			count++;
+		}
+		tempNode = tempNode.getNext();
+		count++;
+		return count;
+	}
+	
 	public void printNodes() {
 		StringBuffer myNodes = new StringBuffer();
 		if(isEmpty()) {

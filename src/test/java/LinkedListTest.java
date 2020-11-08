@@ -166,4 +166,45 @@ public class LinkedListTest {
 				 linkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
 	}
+	
+	@Test
+	public void givenNumber_WhenDeletedValidNodeInLinkedList_ShouldBeDeleted() {
+		Node<Integer> firstNode = new Node<Integer>(56);
+		Node<Integer> secondNode = new Node<Integer>(30);
+		Node<Integer> thirdNode = new Node<Integer>(40);
+		Node<Integer> fourthNode = new Node<Integer>(70);
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		linkedList.add(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		linkedList.append(fourthNode);
+		linkedList.printNodes();
+		linkedList.delete(thirdNode);
+		linkedList.printNodes();
+		boolean result = linkedList.head.equals(firstNode) &&
+				 linkedList.head.getNext().equals(secondNode) &&
+				 linkedList.tail.equals(fourthNode);
+		Assert.assertTrue(result);
+	}
+	
+	@Test
+	public void givenNumber_WhenDeletedInvalidNodeInLinkedList_ShouldNotBeDeleted() {
+		Node<Integer> firstNode = new Node<Integer>(56);
+		Node<Integer> secondNode = new Node<Integer>(30);
+		Node<Integer> thirdNode = new Node<Integer>(40);
+		Node<Integer> fourthNode = new Node<Integer>(70);
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		linkedList.add(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		linkedList.append(fourthNode);
+		linkedList.printNodes();
+		linkedList.delete(new Node<Integer>(90));
+		linkedList.printNodes();
+		boolean result = linkedList.head.equals(firstNode) &&
+				 linkedList.head.getNext().equals(secondNode) &&
+				 linkedList.head.getNext().getNext().equals(thirdNode) &&
+				 linkedList.tail.equals(fourthNode);
+		Assert.assertTrue(result);
+	}
 }
