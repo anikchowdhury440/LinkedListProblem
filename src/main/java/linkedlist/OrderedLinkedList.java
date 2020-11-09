@@ -1,3 +1,4 @@
+package linkedlist;
 
 public class OrderedLinkedList<K extends Comparable<K>> {
 	public OrderedNode<K> head;

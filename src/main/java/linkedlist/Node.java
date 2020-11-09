@@ -1,9 +1,10 @@
+package linkedlist;
 
-public class OrderedNode<K extends Comparable<K>> {
+public class Node<K> {
 	private K value;
-	private OrderedNode<K> next;
+	private Node<K> next;
 	
-	public OrderedNode(K value) {
+	public Node(K value) {
 		this.setValue(value);
 		this.setNext(null);
 	}
@@ -16,11 +17,11 @@ public class OrderedNode<K extends Comparable<K>> {
 		this.value = value;
 	}
 
-	public OrderedNode<K> getNext() {
+	public Node<K> getNext() {
 		return next;
 	}
 
-	public void setNext(OrderedNode<K> next) {
+	public void setNext(Node<K> next) {
 		this.next = next;
 	}
 }

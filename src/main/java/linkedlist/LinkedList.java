@@ -1,3 +1,4 @@
+package linkedlist;
 
 public class LinkedList<K> {
 	public Node<K> head;
@@ -80,14 +81,11 @@ public class LinkedList<K> {
 	
 	public Node<K> search(K value) {
 		Node<K> tempNode = this.head;
-		while(tempNode != null && tempNode.getNext() != null) {
+		while(tempNode != null) {
 			if(tempNode.getValue().equals(value)) {
 				return tempNode;
 			}
 			tempNode = tempNode.getNext();
-		}
-		if(tempNode.getValue().equals(value)) {
-			return tempNode;
 		}
 		return null;
 	}
@@ -111,16 +109,10 @@ public class LinkedList<K> {
 	public int size() {
 		int count = 0;
 		Node<K> tempNode = this.head;
-		if(tempNode == null) {
-			return count;
-		}
-		count++;
-		while(tempNode.getNext() != this.tail) {
-			tempNode = tempNode.getNext();
+		while(tempNode != null) {
 			count++;
+			tempNode = tempNode.getNext();
 		}
-		tempNode = tempNode.getNext();
-		count++;
 		return count;
 	}
 	
